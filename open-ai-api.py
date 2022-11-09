@@ -9,6 +9,13 @@ from dotenv import load_dotenv
 
 load_dotenv("/home/bferry/Projects/openai/.env")
 
+api_key = None
+
+
+api_key = os.getenv("API_KEY") if not api_key else api_key
+if not api_key or api_key=="":
+    raise Exception("Seems like no API key was provided or that it is empty")
+
 parser = argparse.ArgumentParser(description="A simple openai api interface to download dalle images generated from prompt")
 
 prompt = None
@@ -24,7 +31,7 @@ parser.add_argument("-s", "--size", type=str, help="the size of the image to gen
 args = parser.parse_args()
 
 prompt = prompt if prompt else args.prompt
-openai.api_key = os.getenv("API_KEY")
+openai.api_key = api_key
 
 response = openai.Image.create(
   prompt=prompt,

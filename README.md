@@ -4,12 +4,12 @@ This is a simple python wrapper for generating images through the open-ai api
 
 ## Instructions for use
 
+An API key is needed to get your API key signup to [openai](https://openai.com/api/)
 - Create a .env file in the same folder as the script, in which you provide your API key:
 ```
 API_KEY="<your-api-key>"
 ```
-To get your API key signup to [openai](https://openai.com/api/)
-
+- You ca also provide your API key directly in the code even though it is not recommended
 - The script depends on the following python packages: dotenv, openai, requests
 - You may want to replace the shebang (#!) in the header to point to the correct python interpreter / environment
 
