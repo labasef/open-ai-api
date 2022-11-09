@@ -9,7 +9,7 @@ from dotenv import load_dotenv
 
 load_dotenv("/home/bferry/Projects/openai/.env")
 
-api_key = None
+api_key = ""
 
 
 api_key = os.getenv("API_KEY") if not api_key else api_key
