@@ -40,3 +40,8 @@ running the above command will generate the images: duck_in_a_buck_0.jpg and duc
 echo "satan is a dead god" | python3 open-ai-api.py
 ```
 this piping example will generate the image satan_is_a_dead_god__0.jpg
+
+
+
+
+Note: Dall-e generated images are free of copyrights until further notice.
