@@ -55,5 +55,6 @@ for img_id, data in enumerate(response['data']):
                 break
 
             handle.write(block)
+    print(f'{prompt.replace(" ", "_")}_{img_id}.jpg')
 
 
