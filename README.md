@@ -11,7 +11,10 @@ API_KEY="<your-api-key>"
 ```
 - You ca also provide your API key directly in the code even though it is not recommended
 - The script depends on the following python packages: dotenv, openai, requests
-- You may want to replace the shebang (#!) in the header to point to the correct python interpreter / environment
+- You may want to replace the shebang (#!) in the header to point to the correct python interpreter or environment
+
+
+# Dall-e
 
 ## Usage
 
@@ -32,12 +35,12 @@ prompt:                the prompt for image generation
 
 ### examples
 ```commandline
-python3 open-ai-api.py "duck in a buck" -n2 -s"512x512"
+python3 dall-e.py "duck in a buck" -n2 -s"512x512"
 ```
 running the above command will generate the images: duck_in_a_buck_0.jpg and duck_in_a_buck_1.jpg at the location the script was run
 
 ```commandline
-echo "satan is a dead god" | python3 open-ai-api.py
+echo "satan is a dead god" | python3 dall-e.py
 ```
 this piping example will generate the image satan_is_a_dead_god__0.jpg
 
@@ -45,3 +48,25 @@ this piping example will generate the image satan_is_a_dead_god__0.jpg
 
 
 Note: Dall-e generated images are free of copyrights until further notice.
+
+# GPT
+
+## Usage
+
+Note: The script supports piping the prompt, see example below
+
+### arguments and parameters
+- positional arguments:
+
+prompt:                the prompt for image generation
+
+- options:
+
+  -h, --help            show this help message and exit
+
+### examples
+
+```commandline
+python3 gpt.py "comment est votre blanquette ?"
+```
+running the above command will print the following to standard output: `Excellente !`
