@@ -30,14 +30,9 @@ args = parser.parse_args()
 prompt = prompt if prompt else args.prompt
 openai.api_key = api_key
 
-response = openai.Completion.create(
-    engine="gpt-3.5-turbo",
-    prompt=prompt,
-    temperature=0.5,
-    max_tokens=2048,
-    top_p=1,    
-    frequency_penalty=0,
-    presence_penalty=0
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=[{"role": "user", "content": prompt}]
 )
 
-print(response.choices[0].text)
+print(response.choices[0].message.content)
