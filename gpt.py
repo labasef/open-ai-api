@@ -4,7 +4,7 @@ import sys
 import os
 import argparse
 import requests
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 
 load_dotenv("/home/bferry/Projects/openai/.env")
@@ -12,11 +12,13 @@ load_dotenv("/home/bferry/Projects/openai/.env")
 api_key = ""
 
 
-api_key = os.getenv("API_KEY") if not api_key else api_key
-if not api_key:
-    raise Exception("Seems like no API key was provided or that it is empty")
+api_key = os.getenv("OPENAI_API_KEY") if not api_key else api_key
+if not api_key or api_key=="":
+    raise Exception("Seems like no API key was provided or that it is empty; pass it with the OPENAI_API_KEY environment variable")
 
 parser = argparse.ArgumentParser(description="A simple openai api interface to download dalle images generated from prompt")
+
+parser.add_argument("-m", "--model", type=str, help="the openai model to use", default="gpt-3.5-turbo", choices=['gpt-3.5-turbo', 'gpt-4o', 'gpt-4-turbo'])
 
 prompt = None
 if not sys.stdin.isatty():
@@ -28,9 +30,11 @@ else:
 args = parser.parse_args()
 
 prompt = prompt if prompt else args.prompt
-openai.api_key = api_key
+model = args.model
 
-response = openai.ChatCompletion.create(
+client = OpenAI()
+
+response = client.chat.completions.create(
     model="gpt-3.5-turbo",
     messages=[{"role": "user", "content": prompt}]
 )
